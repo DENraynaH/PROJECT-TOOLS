@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JsonObjectSerializer
+public class JsonObjectSerializer<T> where T : SerializableObject
 {
     private readonly IDataSerializer _dataSerializer = new JsonDataSerializer();
     
@@ -21,17 +21,22 @@ public class JsonObjectSerializer
             RestoreState(objectState);
     }
     
+    public void SetSerializePath(string serializePath)
+    {
+        _dataSerializer.SerializePath = $"{Application.persistentDataPath}/{serializePath}";
+    }
+    
     private void CaptureState(Dictionary<string, object> objectState)
     {
-        SerializableObject[] serializableObjects = Object.FindObjectsOfType<SerializableObject>();
-        foreach (SerializableObject serializableObject in serializableObjects)
+        T[] serializableObjects = Object.FindObjectsOfType<T>();
+        foreach (T serializableObject in serializableObjects)
             objectState[serializableObject.UniqueIdentifier] = serializableObject.CaptureState();
     }
 
     private void RestoreState(Dictionary<string, object> objectState)
     {
-        SerializableObject[] serializableObjects = Object.FindObjectsOfType<SerializableObject>();
-        foreach (SerializableObject serializableObject in serializableObjects)
+        T[] serializableObjects = Object.FindObjectsOfType<T>();
+        foreach (T serializableObject in serializableObjects)
         {
             if (objectState.TryGetValue(serializableObject.UniqueIdentifier, out object componentState))
                 serializableObject.RestoreState(componentState);

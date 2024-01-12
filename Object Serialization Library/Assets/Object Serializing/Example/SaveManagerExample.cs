@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SaveManagerExample : MonoBehaviour
 {
-    private readonly JsonObjectSerializer _jsonObjectSerializer = new JsonObjectSerializer();
+    private readonly JsonObjectSerializer<SerializableObject> _jsonObjectSerializer = new();
     
     [ContextMenu("Save")]
     public void Save()

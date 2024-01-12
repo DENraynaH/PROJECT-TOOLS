@@ -7,8 +7,12 @@ using UnityEngine;
 
 public class JsonDataSerializer : IDataSerializer
 {
-    private string SerializePath => $"{Application.persistentDataPath}/saveData.json";
-    
+    public string SerializePath
+    {
+        get => $"{Application.persistentDataPath}/saveData.json";
+        set => SerializePath = value;
+    }
+
     public bool SaveFile(object state)
     {
         try
