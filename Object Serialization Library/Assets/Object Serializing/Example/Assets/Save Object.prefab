@@ -45,10 +45,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16e5b2d6f0d794446ad83aa25f30dab6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _objectHealth: 2
-  _objectLevel: 2
-  _objectName: 2
-  _objectIsAlive: 1
+  _objectHealth: 0
+  _objectLevel: 0
+  _objectName: 
+  _objectIsAlive: 0
+  _objectPosition: {x: 0, y: 0, z: 0}
+  _objectRotation: {x: 0, y: 0, z: 0, w: 0}
+  _objectColor: {r: 0, g: 0, b: 0, a: 0}
+  _objectMatrix:
+    e00: 0
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 0
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 0
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 0
+  _objectScriptableObject: {fileID: 0}
+  _exampleClassObject:
+    ObjectPosition: {x: 0, y: 0, z: 0}
+    ObjectRotation: {x: 0, y: 0, z: 0, w: 0}
+    ObjectColor: {r: 0, g: 0, b: 0, a: 0}
+  _exampleClassObject2:
+    ObjectPosition: {x: 0, y: 0, z: 0}
+    ObjectRotation: {x: 0, y: 0, z: 0, w: 0}
+    ObjectColor: {r: 0, g: 0, b: 0, a: 0}
+    ObjectGameObject: {fileID: 0}
 --- !u!114 &3349654438982566281
 MonoBehaviour:
   m_ObjectHideFlags: 0

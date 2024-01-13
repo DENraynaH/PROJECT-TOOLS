@@ -12,6 +12,26 @@ public class JsonDataSerializer : IDataSerializer
         get => $"{Application.persistentDataPath}/saveData.json";
         set => SerializePath = value;
     }
+    
+    public JsonDataSerializer()
+    {
+        List<JsonConverter> jsonConverters = new List<JsonConverter>
+        {
+            new ColorConverter(),
+            new LayerMaskConverter(),
+            new Matrix4x4Converter(),
+            new QuaternionConverter(),
+            new ScriptableObjectConverter(),
+            new Vector2Converter(),
+            new Vector2IntConverter(),
+            new Vector3Converter(),
+            new Vector3IntConverter(),
+            new Vector4Converter()
+        };
+        
+        JsonConvert.DefaultSettings = () => new JsonSerializerSettings 
+            { Converters = jsonConverters };
+    }
 
     public bool SaveFile(object state)
     {

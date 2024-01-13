@@ -18,3 +18,4 @@ public class SaveManagerExample : MonoBehaviour
         _jsonObjectSerializer.LoadObjects();
     }
 }
+

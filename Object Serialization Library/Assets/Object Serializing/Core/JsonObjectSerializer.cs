@@ -21,7 +21,7 @@ public class JsonObjectSerializer<T> where T : SerializableObject
             RestoreState(objectState);
     }
     
-    public void SetSerializePath(string serializePath)
+    public void SetSerializePath(string serializePath) 
     {
         _dataSerializer.SerializePath = $"{Application.persistentDataPath}/{serializePath}";
     }

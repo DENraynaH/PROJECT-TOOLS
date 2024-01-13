@@ -10,7 +10,7 @@ public class SaveManagerExample2 : MonoBehaviour
 
     private void Awake()
     {
-        _jsonObjectSerializer.SetSerializePath(SAVE_PATH);
+        //_jsonObjectSerializer.SetSerializePath(SAVE_PATH);
     }
 
     [ContextMenu("Save")]
