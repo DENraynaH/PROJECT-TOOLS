@@ -7,4 +7,5 @@ using UnityEngine;
 public class ScriptableObjectExample : ScriptableObject
 {
     public int ExampleInt;
+    public NestedScriptableObjectExample ScriptableObjectExampleNested;
 }

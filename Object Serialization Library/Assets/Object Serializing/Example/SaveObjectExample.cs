@@ -55,6 +55,7 @@ public class SaveObjectExample : MonoBehaviour, ISerializableObject
     }
 }
 
+[Serializable]
 public struct ExampleObjectData
 {
     public float ObjectHealth;
@@ -76,6 +77,7 @@ public class ExampleClassObject
     public Vector3 ObjectPosition;
     public Quaternion ObjectRotation;
     public Color ObjectColor;
+    public ExampleClassObject2 _exampleClassObject2;
 }
 
 [Serializable]
