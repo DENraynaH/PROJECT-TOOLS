@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8af94aa36d77a97429e290e27d8b2897, type: 3}
   m_Name: ScriptableObjectExample
   m_EditorClassIdentifier: 
-  ExampleInt: 0
+  ExampleInt: 5
+  ScriptableObjectExampleNested: {fileID: 11400000, guid: 373db05358721a7449ae1b9447264b31,
+    type: 2}
