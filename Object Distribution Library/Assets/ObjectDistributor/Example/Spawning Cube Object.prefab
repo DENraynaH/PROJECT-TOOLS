@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6919968389292819508}
   - component: {fileID: 3589482048355332703}
   m_Layer: 9
-  m_Name: Average Normal Cubre
+  m_Name: Spawning Cube Object
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

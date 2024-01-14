@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _castLayers:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 0
   _minimumCollisions: 0
   _castOffsetDistance: 0
   _castOffsetDirection: {x: 0, y: 0, z: 0}

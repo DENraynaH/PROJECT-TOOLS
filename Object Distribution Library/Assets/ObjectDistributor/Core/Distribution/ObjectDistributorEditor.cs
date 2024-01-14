@@ -49,8 +49,6 @@ namespace Raynah.Core
                     DrawPointGizmos(pointDistributionZone); break;
                 case SphereDistributionZone sphereDistributionZone:
                     DrawSphereGizmos(sphereDistributionZone); break;
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(distributionZone));
             }
             
             void DrawPointGizmos(PointDistributionZone pointDistributionZone)

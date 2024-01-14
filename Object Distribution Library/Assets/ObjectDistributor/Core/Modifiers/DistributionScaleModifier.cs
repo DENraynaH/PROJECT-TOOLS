@@ -1,21 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Raynah
+namespace Raynah.Core
 {
-    public class DistributionScaleModifier : MonoBehaviour
+    [CreateAssetMenu(fileName = "DistributionScaleModifier", menuName = "Distribution/DistributionScaleModifier")]
+    public class DistributionScaleModifier : DistributionModifier
     {
-        // Start is called before the first frame update
-        void Start()
-        {
+        [SerializeField] private Vector3Boundaries _scaleBoundaries;
+        [SerializeField] private AxisConstraint _axisConstraint;
         
-        }
-
-        // Update is called once per frame
-        void Update()
+        public override bool Modify(GameObject distributableObject, DistributionZone distributionZone)
         {
-        
+            Debug.Log("Running Scale Modifier");
+            
+            Vector3 randomScale = _scaleBoundaries.GetRandom();
+            
+            if (_axisConstraint.X)
+                randomScale.x = distributableObject.transform.localScale.x;
+            
+            if (_axisConstraint.Y)
+                randomScale.y = distributableObject.transform.localScale.y;
+            
+            if (_axisConstraint.Z)
+                randomScale.z = distributableObject.transform.localScale.z;
+            
+            distributableObject.transform.localScale = randomScale;
+            return true;
         }
     }
 }

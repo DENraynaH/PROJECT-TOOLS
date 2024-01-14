@@ -10,7 +10,7 @@ namespace Raynah.Core
 {
     public class RuntimeDistributor : MonoBehaviour
     {
-        [SerializeField] private ObjectDistributor _objectDistributor;
+        [SerializeField] private RuntimeObjectDistributor _objectDistributor;
         [SerializeField] private int _distributionQuantity;
         [SerializeField] private float _distributionInterval;
         [SerializeField] private float _distributionMaximum;
@@ -20,7 +20,7 @@ namespace Raynah.Core
         
         private void Awake()
         {
-            _objectDistributor = GetComponent<ObjectDistributor>();
+            _objectDistributor = GetComponent<RuntimeObjectDistributor>();
             Timers.LoopingAction(_distributionInterval, Distribute).Start();
         }
 

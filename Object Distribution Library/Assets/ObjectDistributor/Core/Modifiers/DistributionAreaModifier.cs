@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Raynah.Core
 {
-    [CreateAssetMenu(fileName = "DistributionAreaModifier", menuName = "Core/Distribution/DistributionAreaModifier")]
+    [CreateAssetMenu(fileName = "DistributionAreaModifier", menuName = "Distribution/DistributionAreaModifier")]
     public class DistributionAreaModifier : DistributionModifier
     {
         [SerializeField] private LayerMask _castLayers;

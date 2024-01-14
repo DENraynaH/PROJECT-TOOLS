@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Raynah.Utilities;
 using Sirenix.OdinInspector;
-using UnityEditor;
 using UnityEngine;
 
 namespace Raynah.Core
@@ -10,14 +8,12 @@ namespace Raynah.Core
     public class ObjectDistributor : MonoBehaviour
     {
         public List<DistributionZone> DistributionZones => _distributionZones.ToList();
-        public List<DistributableObject> DistributedObjects => _distributedObjects;
         
         [FoldoutGroup("Settings")] [SerializeField] private DistributionType _distributionType;
         [FoldoutGroup("Settings")] [SerializeField] private int _maxDistributionAttempt = 50;
         [FoldoutGroup("Settings")] [SerializeField] private WeightedTable<GameObject> _distributableObjects = new();
         [FoldoutGroup("Settings")] [SerializeField] private WeightedTable<DistributionZone> _distributionZones = new();
         [FoldoutGroup("Settings")] [SerializeField] private List<DistributionModifier> _distributionModifiers = new();
-        [FoldoutGroup("Debug")] [SerializeField] private List<DistributableObject> _distributedObjects = new();
         
         private IDistributionStrategy _distributionStrategy;
         
@@ -27,7 +23,8 @@ namespace Raynah.Core
                 Distribute();
         }
         
-        [Button] public void Distribute()
+        [Button] 
+        public void Distribute()
         {
             bool isDistributionTableSetup = IsSetup();
             
@@ -43,7 +40,7 @@ namespace Raynah.Core
                 DistributeObject(distributionZone);
         }
         
-        private void DistributeObject(DistributionZone distributionZone)
+        protected virtual void DistributeObject(DistributionZone distributionZone)
         {
             int distributionAttempt = 0;
             bool isDistributed = false;
@@ -60,15 +57,12 @@ namespace Raynah.Core
             }
 
             if (isDistributed)
-            {
-                DistributableObject distributableObject = distributedObject.GetOrAddComponent<DistributableObject>();
-                _distributedObjects.Add(distributableObject);   
-            }
+                OnDistribute(distributedObject);
             else
-                Destroy(distributedObject);
+                OnDistributeFailed(distributedObject);
         }
         
-        private bool ApplyModifiers(GameObject distributableObject, DistributionZone distributionZone)
+        protected virtual bool ApplyModifiers(GameObject distributableObject, DistributionZone distributionZone)
         {
             foreach (DistributionModifier modifier in _distributionModifiers)
             {
@@ -77,6 +71,13 @@ namespace Raynah.Core
                     return false;
             }
             return true;
+        }
+        
+        protected virtual void OnDistribute(GameObject distributedObject) { }
+
+        protected virtual void OnDistributeFailed(GameObject distributedObject)
+        {
+            Destroy(distributedObject);
         }
         
         private IDistributionStrategy GetDistributionStrategy()

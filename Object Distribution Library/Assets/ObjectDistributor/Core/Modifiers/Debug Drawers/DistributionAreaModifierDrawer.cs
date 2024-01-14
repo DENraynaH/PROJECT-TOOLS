@@ -9,10 +9,11 @@ using UnityEngine;
 
 namespace Raynah
 {
-    public class DistributionAreaModifierDebugger : MonoBehaviour
+    [ExecuteInEditMode]
+    public class DistributionAreaModifierDrawer : MonoBehaviour
     {
         [SerializeField] DistributionAreaModifier _distributionAreaModifier;
-        [SerializeField] private float _showDebuggerDuration = 10.0f;
+        [SerializeField] private float _drawDuration = 10.0f;
         
         private float _castOffsetDistance;
         private Vector3 _castOffsetDirection;
@@ -20,7 +21,7 @@ namespace Raynah
         private GameObject _distributedObject;
         private bool _successfulDistribution;
         private int _collidedObjects;
-        private bool _drawDebugger;
+        //private bool _drawDebugger;
 
         private Timer _drawTimer;
 
@@ -43,7 +44,7 @@ namespace Raynah
             _collidedObjects = distributionAreaModifierData.CollidedObjects;
             _successfulDistribution = distributionAreaModifierData.SuccessfulDistribution;
             
-            _drawDebugger = true; 
+            //_drawDebugger = true; 
             
             //TODO
             /*Timer System needs to include some form of object
@@ -53,7 +54,7 @@ namespace Raynah
             /* Timer System may also not support editor timers,
             only useable in runtime. */
             
-            //TODO SUPPORT DRAWING TEMPORARY GIZMOS, EVEN THE OBJECT DOESN'T SPAWN
+            //TODO SUPPORT DRAWING TEMPORARY GIZMOS, EVEN WHEN THE OBJECT DOESN'T SPAWN
             /*_drawTimer.Cancel();
             _drawTimer = Timers.TimedAction
                     (_showDebuggerDuration, () => _drawDebugger = false).Start();*/
